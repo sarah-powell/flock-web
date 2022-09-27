@@ -1,2 +1,6 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import Flock from '$lib/Flock.svelte'
+</script>
+
+<Flock title="R.I.P." date={new Date(2016, 4, 28)}/>
+<Flock title="Test 2" date={new Date(2018, 3, 23)}/>
