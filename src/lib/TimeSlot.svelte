@@ -13,11 +13,12 @@
 </div>
 
 <style>
-  .time-slot {
-      display: inline-block;
-  }
 
-  .label {
-      display: inline-block;
-  }
+    .time-slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 4px;
+    }
+
 </style>

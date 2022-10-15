@@ -13,4 +13,4 @@ A countdown application, built with [SvelteKit](https://kit.svelte.dev/docs/intr
 - [Day.js](https://day.js.org)
 
 
-###### It rhymes with clock.
+###### *(It rhymes with clock)*

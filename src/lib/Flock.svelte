@@ -38,7 +38,19 @@
 
 
 <style>
-  .flock {
-      display: inline;
-  }
+
+    .flock {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .slots {
+        display: flex;
+    }
+
 </style>
