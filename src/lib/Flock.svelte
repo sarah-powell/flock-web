@@ -10,6 +10,15 @@
 
   let duration = getDurationFrom(date);
 
+  const components = [
+    { component: duration.years(), label: "years" },
+    { component: duration.months(), label: "months" },
+    { component: duration.days(), label: "days" },
+    { component: duration.hours(), label: "hours" },
+    { component: duration.minutes(), label: "minutes" },
+    { component: duration.seconds(), label: "seconds" }
+  ];
+
   function getDurationFrom(date) {
     const now = dayjs();
     return dayjs.duration(now.diff(date));
@@ -23,16 +32,13 @@
       {title}
     </div>
     <div class="flock-date">
-      {date}
+      {date.toLocaleDateString()}
     </div>
   </div>
   <div class="slots">
-    <TimeSlot value={duration.years()} label="Years"/>
-    <TimeSlot value={duration.months()} label="Months"/>
-    <TimeSlot value={duration.days()} label="Days"/>
-    <TimeSlot value={duration.hours()} label="Hours"/>
-    <TimeSlot value={duration.minutes()} label="Minutes"/>
-    <TimeSlot value={duration.seconds()} label="Seconds"/>
+    {#each components as comp}
+      <TimeSlot value={comp.component} label={comp.label}/>
+    {/each}
   </div>
 </div>
 
