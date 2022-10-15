@@ -7,17 +7,43 @@
   export let title;
   export let date = new Date(1970, 1, 1);
   export let url;
+  const numSlotsToDisplay = 3;
 
   let duration = getDurationFrom(date);
 
   const components = [
-    { component: duration.years(), label: "years" },
-    { component: duration.months(), label: "months" },
-    { component: duration.days(), label: "days" },
-    { component: duration.hours(), label: "hours" },
-    { component: duration.minutes(), label: "minutes" },
-    { component: duration.seconds(), label: "seconds" }
+    { value: duration.years(), label: "years" },
+    { value: duration.months(), label: "months" },
+    { value: duration.days(), label: "days" },
+    { value: duration.hours(), label: "hours" },
+    { value: duration.minutes(), label: "minutes" },
+    { value: duration.seconds(), label: "seconds" }
   ];
+
+  /**
+   * Find the displayable time components to render
+   * @returns array of components
+   */
+  function displayableTimes() {
+    let compLength = components.length;
+
+    let startIndex = 0;
+    let endIndex = 6;
+
+    // Find the first non-zero value
+    for (const [index, comp] of components.entries()) {
+      if (comp.value > 0) {
+        // Determine how many slots we can render with this index
+        let canRender = Math.min(compLength - index, numSlotsToDisplay);
+        let backFillAmount = numSlotsToDisplay - canRender;
+        startIndex = index - backFillAmount;
+        endIndex = Math.min(compLength, startIndex + numSlotsToDisplay);
+        break;
+      }
+    }
+
+    return components.slice(startIndex, endIndex);
+  }
 
   function getDurationFrom(date) {
     const now = dayjs();
@@ -36,8 +62,8 @@
     </div>
   </div>
   <div class="slots">
-    {#each components as comp}
-      <TimeSlot value={comp.component} label={comp.label}/>
+    {#each displayableTimes() as comp}
+      <TimeSlot value={comp.value} label={comp.label}/>
     {/each}
   </div>
 </div>
@@ -57,6 +83,7 @@
 
     .slots {
         display: flex;
+        justify-content: space-between;
     }
 
 </style>
