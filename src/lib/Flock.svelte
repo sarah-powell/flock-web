@@ -6,7 +6,6 @@
 
   export let title;
   export let date = new Date(1970, 1, 1);
-  export let url;
   const numSlotsToDisplay = 3;
 
   let duration = getDurationFrom(date);

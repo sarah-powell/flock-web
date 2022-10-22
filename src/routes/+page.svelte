@@ -1,14 +1,29 @@
 <script>
   import Flock from '$lib/Flock.svelte'
+  import { onMount } from 'svelte';
+
+  const storageKey = 'flockData';
+  let flocks = [];
+
+  // Retrieve flocks from storage when component loads
+  onMount(() => {
+    const storage = localStorage.getItem(storageKey) ?? '[{"test": 123}]';
+
+    try {
+      flocks = JSON.parse(storage)
+    } catch(error) {
+      console.error('Failed to parse storage: ' + error)
+    }
+  });
+
 </script>
 
 <div class="main">
+  <a href="/create">+</a>
   <div class="content">
-    <Flock title="R.I.P." date={new Date(2016, 4, 28)}/>
-    <Flock title="Test 2" date={new Date(2018, 3, 23)}/>
-    <Flock title="Test 3" date={new Date(2022, 9, 1)}/>
-    <Flock title="Test 4" date={new Date(2022, 9, 15)}/>
-    <Flock title="Test 5" date={new Date(2022, 9, 1)}/>
+    {#each flocks as flock}
+      <Flock title={flock.title} date={new Date(flock.date)}/>
+    {/each}
   </div>
 </div>
 
