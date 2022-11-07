@@ -1,11 +1,14 @@
 <script>
+  import { v4 as uuidv5 } from 'uuid';
+
   const storageKey = 'flockData';
 
-  let title = '';
-  let date = new Date();
+  export let id = uuidv5();
+  export let title = '';
+  export let date = new Date();
 
   function submitForm() {
-    saveFlock({title, date})
+    saveFlock({id, title, date})
   }
 
   /**

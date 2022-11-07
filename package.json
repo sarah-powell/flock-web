@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dayjs": "^1.11.5"
+		"dayjs": "^1.11.5",
+		"uuid": "^9.0.0"
 	}
 }
