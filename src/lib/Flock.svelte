@@ -35,7 +35,7 @@
 
     // Find the first non-zero value
     for (const [index, comp] of components.entries()) {
-      if (comp.value > 0) {
+      if (Math.abs(comp.value) > 0) {
         // Determine how many slots we can render with this index
         let canRender = Math.min(compLength - index, numSlotsToDisplay);
         let backFillAmount = numSlotsToDisplay - canRender;
