@@ -66,7 +66,7 @@
   </div>
   <div class="slots">
     {#each displayableTimes() as comp}
-      <TimeSlot value={comp.value} label={comp.label}/>
+      <TimeSlot value={Math.abs(comp.value)} label={comp.label}/>
     {/each}
   </div>
   <div class="drawer">
