@@ -22,7 +22,7 @@
   <a href="/create">+</a>
   <div class="content">
     {#each flocks as flock}
-      <Flock title={flock.title} date={new Date(flock.date)}/>
+      <Flock id={flock.id} title={flock.title} date={new Date(flock.date)}/>
     {/each}
   </div>
 </div>

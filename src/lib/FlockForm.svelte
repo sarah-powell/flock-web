@@ -1,58 +1,37 @@
 <script>
   import { v4 as uuidv5 } from 'uuid';
+  import { page } from '$app/stores';
+  import { onMount } from "svelte";
+  import { findFlockInStorage, saveFlock } from "$lib/StorageUtils.svelte";
 
-  const storageKey = 'flockData';
+  const idParam = $page.url.searchParams.get('id');
+  let id;
+  let title;
+  let date;
 
-  export let id = uuidv5();
-  export let title = '';
-  export let date = new Date();
+  onMount(() => {
+    // New Flock
+    if (!idParam) {
+      id = uuidv5();
+      title = '';
+      date = new Date();
+    } else {
+      // Editing an existing Flock
+      let flock = findFlockInStorage(idParam)
+      console.log("From storage: " + flock);
+      if (flock) {
+        id = flock.id;
+        title = flock.title;
+        date = flock.date;
+      }
+    }
+  })
 
   function submitForm() {
     saveFlock({id, title, date})
   }
 
-  /**
-   * Retrieves an object from storage
-   * @param key the key the object is stored under
-   * @returns the object. Never null.
-   */
-  function getStorage(key) {
-    let storage
-    try {
-      storage = JSON.parse(localStorage.getItem(key) ?? '[]')
-    } catch (error) {
-      console.error('Unable to save Flock: '+ error);
-      return {};
-    }
-    return storage;
-  }
-
-  /**
-   * @param object the object to save in storage
-   */
-  function setStorage(object) {
-    try {
-      localStorage.setItem(storageKey, JSON.stringify(object));
-    } catch (error) {
-      console.error('Unable to save Flock: '+ error);
-    }
-  }
-
-  /**
-   * Saves the given flock object to storage
-   * @param flock
-   */
-  function saveFlock(flock) {
-    let storage = getStorage(storageKey);
-    storage = [... storage, flock];
-    setStorage(storage);
-
-    // redirect back to main page
-    window.location = '/'
-  }
-
 </script>
-
 
 <form on:submit|preventDefault={submitForm}>
 

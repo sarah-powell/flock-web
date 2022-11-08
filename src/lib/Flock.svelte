@@ -2,8 +2,12 @@
   import dayjs from 'dayjs'
   import Duration from 'dayjs/plugin/duration'
   import TimeSlot from "$lib/TimeSlot.svelte";
+  import DrawerItem from "$lib/DrawerItem.svelte";
+  import { items } from "$lib/DrawerItem.svelte";
+
   dayjs.extend(Duration) // Needed to extend the API
 
+  export let id;
   export let title;
   export let date = new Date(1970, 1, 1);
   const numSlotsToDisplay = 3;
@@ -65,6 +69,11 @@
       <TimeSlot value={comp.value} label={comp.label}/>
     {/each}
   </div>
+  <div class="drawer">
+    <DrawerItem item="{items.edit}" flockId="{id}"/>
+    <DrawerItem item="{items.share}" flockId="{id}"/>
+    <DrawerItem item="{items.delete}" flockId="{id}"/>
+  </div>
 </div>
 
 
@@ -83,6 +92,12 @@
     .slots {
         display: flex;
         justify-content: space-between;
+    }
+
+    .drawer {
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
     }
 
 </style>
