@@ -7,12 +7,16 @@
 </script>
 
 <script>
+  import { deleteFlock } from "$lib/StorageUtils.svelte";
+
   export let item;
   export let flockId;
 
   function handleClick() {
     if (item === items.edit) {
       window.location = '/create' + (flockId ? '?id=' + flockId : '');
+    } else if (item === items.delete) {
+      deleteFlock(flockId);
     }
   }
 

@@ -18,7 +18,6 @@
     } else {
       // Editing an existing Flock
       let flock = findFlockInStorage(idParam)
-      console.log("From storage: " + flock);
       if (flock) {
         id = flock.id;
         title = flock.title;

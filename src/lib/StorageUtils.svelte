@@ -1,5 +1,5 @@
 <script context="module">
-  const STORAGE_KEY = 'flockData';
+  export const STORAGE_KEY = 'flockData';
 
   /**
    * Retrieves an object from storage
@@ -24,7 +24,7 @@
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(object));
     } catch (error) {
-      console.error('Unable to save Flock: ' + error);
+      console.error('Unable to set storage: ' + error);
     }
   }
 
@@ -54,10 +54,10 @@
    * Deletes a flock from storage
    * @returns the new storage object
    */
-  export function deleteFlock(flock) {
+  export function deleteFlock(flockId) {
     let storage = getStorage(STORAGE_KEY);
     const index = storage.findIndex(f => {
-      return f.id === flock.id;
+      return f.id === flockId;
     });
     if (index > -1) {
       storage.splice(index, 1);
