@@ -7,7 +7,7 @@
 </script>
 
 <script>
-  import { deleteFlock } from "$lib/StorageUtils.svelte";
+  import { deleteFlock } from "$lib/utils/StorageUtils.svelte";
 
   export let item;
   export let flockId;

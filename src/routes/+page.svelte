@@ -1,7 +1,7 @@
 <script>
-  import Flock from '$lib/Flock.svelte'
+  import Flock from '$lib/components/Flock.svelte'
   import { onMount } from 'svelte';
-  import { getStorage, STORAGE_KEY } from "$lib/StorageUtils.svelte";
+  import { getStorage, STORAGE_KEY } from "$lib/utils/StorageUtils.svelte";
 
   let flocks = [];
 

@@ -2,7 +2,7 @@
   import { v4 as uuidv5 } from 'uuid';
   import { page } from '$app/stores';
   import { onMount } from "svelte";
-  import { findFlockInStorage, saveFlock } from "$lib/StorageUtils.svelte";
+  import { findFlockInStorage, saveFlock } from "$lib/utils/StorageUtils.svelte";
 
   const idParam = $page.url.searchParams.get('id');
   let id;

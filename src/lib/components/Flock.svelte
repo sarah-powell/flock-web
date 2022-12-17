@@ -1,9 +1,9 @@
 <script>
   import dayjs from 'dayjs'
   import Duration from 'dayjs/plugin/duration'
-  import TimeSlot from "$lib/TimeSlot.svelte";
-  import DrawerItem from "$lib/DrawerItem.svelte";
-  import { items } from "$lib/DrawerItem.svelte";
+  import TimeSlot from "$lib/components/TimeSlot.svelte";
+  import DrawerItem from "$lib/components/DrawerItem.svelte";
+  import { items } from "$lib/components/DrawerItem.svelte";
 
   dayjs.extend(Duration) // Needed to extend the API
 
