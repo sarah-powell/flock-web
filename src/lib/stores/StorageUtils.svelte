@@ -9,7 +9,7 @@
   export function getStorage(key) {
     let storage
     try {
-      storage = JSON.parse(localStorage.getItem(key) ?? '[]')
+      //storage = JSON.parse(localStorage.getItem(key) ?? '[]')
     } catch (error) {
       console.error('Unable to retrieve Flock data: ' + error);
       return {};
@@ -22,7 +22,7 @@
    */
   export function setStorage(object) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(object));
+      //localStorage.setItem(STORAGE_KEY, JSON.stringify(object));
     } catch (error) {
       console.error('Unable to set storage: ' + error);
     }

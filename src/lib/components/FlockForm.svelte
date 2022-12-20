@@ -2,7 +2,6 @@
   import { v4 as uuidv5 } from 'uuid';
   import { page } from '$app/stores';
   import { onMount } from "svelte";
-  import { findFlockInStorage, saveFlock } from "$lib/utils/StorageUtils.svelte";
 
   const idParam = $page.url.searchParams.get('id');
   let id;
@@ -17,17 +16,17 @@
       date = new Date();
     } else {
       // Editing an existing Flock
-      let flock = findFlockInStorage(idParam)
-      if (flock) {
-        id = flock.id;
-        title = flock.title;
-        date = flock.date;
-      }
+      // let flock = findFlockInStorage(idParam)
+      // if (flock) {
+      //   id = flock.id;
+      //   title = flock.title;
+      //   date = flock.date;
+      // }
     }
   })
 
   function submitForm() {
-    saveFlock({id, title, date})
+
   }
 
 </script>
