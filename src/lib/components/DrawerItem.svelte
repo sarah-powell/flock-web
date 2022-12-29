@@ -8,6 +8,7 @@
 
 <script>
   import { goto } from "$app/navigation";
+  import { flockStore } from "$lib/stores/FlockStore.js";
 
   export let item;
   export let flockId;
@@ -16,10 +17,11 @@
     if (item === items.edit) {
       goto('/create' + (flockId ? '?id=' + flockId : ''));
     } else if (item === items.delete) {
-      //deleteFlock(flockId);
+      flockStore.update((flocks) => {
+        return flocks.filter((f) => f.id !== flockId);
+      });
     }
   }
-
 
 </script>
 
