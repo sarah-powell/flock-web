@@ -1,7 +1,14 @@
 <script>
-  import { v4 as uuidv5 } from 'uuid';
+  import { onDestroy, onMount } from "svelte";
+  import { goto } from "$app/navigation";
   import { page } from '$app/stores';
-  import { onMount } from "svelte";
+  import { flockStore } from "$lib/stores/FlockStore.js";
+  import { v4 as uuidv5 } from 'uuid';
+
+  let flocks;
+  const unsubscribe = flockStore.subscribe((flockList) => {
+    flocks = flockList;
+  });
 
   const idParam = $page.url.searchParams.get('id');
   let id;
@@ -16,17 +23,32 @@
       date = new Date();
     } else {
       // Editing an existing Flock
-      // let flock = findFlockInStorage(idParam)
-      // if (flock) {
-      //   id = flock.id;
-      //   title = flock.title;
-      //   date = flock.date;
-      // }
+      let flock = flocks.find((f) => idParam === f.id);
+      if (flock) {
+        id = flock.id;
+        title = flock.title;
+        date = flock.date;
+      }
     }
-  })
+  });
+
+  onDestroy(() => {
+    unsubscribe();
+  });
 
   function submitForm() {
+    flockStore.update((flocks) => {
+      // Delete existing flock ID if present
+      flocks = flocks.filter((f) => f.id !== id);
 
+      // Add new flock
+      flocks.push({id, title, date});
+
+      return flocks;
+    });
+
+    // Redirect back to main page
+    goto("/");
   }
 
 </script>
