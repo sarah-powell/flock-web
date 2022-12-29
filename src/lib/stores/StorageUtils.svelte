@@ -1,4 +1,6 @@
 <script context="module">
+  import { goto } from "$app/navigation";
+
   export const STORAGE_KEY = 'flockData';
 
   /**
@@ -47,7 +49,7 @@
     setStorage(storage);
 
     // redirect back to main page
-    window.location = '/'
+    goto("/");
   }
 
   /**
