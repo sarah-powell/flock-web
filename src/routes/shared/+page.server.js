@@ -2,8 +2,9 @@ import { error } from "@sveltejs/kit";
 
 export async function load({ url }) {
 
-  const titleParam = url.searchParams.get('title');
-  const dateParam = url.searchParams.get('date');
+  const titleParam = url.searchParams.get('t');
+  const dateParam = url.searchParams.get('d');
+  let date = new Date(dateParam);
 
   if (!titleParam) {
     throw error(400, {
@@ -19,7 +20,7 @@ export async function load({ url }) {
     });
   }
 
-  if (isNaN(Number(dateParam))) {
+  if (isNaN(date.getTime())) {
     throw error(400, {
       message: 'Invalid date',
       code: 400
