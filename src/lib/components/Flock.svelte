@@ -5,11 +5,13 @@
   import DrawerItem from "$lib/components/DrawerItem.svelte";
   import { items } from "$lib/components/DrawerItem.svelte";
 
-  dayjs.extend(Duration) // Needed to extend the API
+  dayjs.extend(Duration) // Extends the API
 
-  export let id;
+  export let id = undefined;
   export let title;
   export let date = new Date(1970, 1, 1);
+  export let showToolDrawer = true;
+
   const numSlotsToDisplay = 3;
 
   let duration = getDurationFrom(date);
@@ -69,11 +71,13 @@
       <TimeSlot value={Math.abs(comp.value)} label={comp.label}/>
     {/each}
   </div>
-  <div class="drawer">
-    <DrawerItem item="{items.edit}" flockId="{id}"/>
-    <DrawerItem item="{items.share}" flockId="{id}"/>
-    <DrawerItem item="{items.delete}" flockId="{id}"/>
-  </div>
+  {#if showToolDrawer}
+    <div class="drawer">
+      <DrawerItem item="{items.edit}" flockId="{id}"/>
+      <DrawerItem item="{items.share}" flockId="{id}"/>
+      <DrawerItem item="{items.delete}" flockId="{id}"/>
+    </div>
+  {/if}
 </div>
 
 

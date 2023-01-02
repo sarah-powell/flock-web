@@ -1,4 +1,6 @@
 <script context="module">
+  import { goto } from "$app/navigation";
+
   export const STORAGE_KEY = 'flockData';
 
   /**
@@ -9,7 +11,7 @@
   export function getStorage(key) {
     let storage
     try {
-      storage = JSON.parse(localStorage.getItem(key) ?? '[]')
+      //storage = JSON.parse(localStorage.getItem(key) ?? '[]')
     } catch (error) {
       console.error('Unable to retrieve Flock data: ' + error);
       return {};
@@ -22,7 +24,7 @@
    */
   export function setStorage(object) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(object));
+      //localStorage.setItem(STORAGE_KEY, JSON.stringify(object));
     } catch (error) {
       console.error('Unable to set storage: ' + error);
     }
@@ -47,7 +49,7 @@
     setStorage(storage);
 
     // redirect back to main page
-    window.location = '/'
+    goto("/");
   }
 
   /**

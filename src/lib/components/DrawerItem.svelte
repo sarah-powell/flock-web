@@ -7,19 +7,21 @@
 </script>
 
 <script>
-  import { deleteFlock } from "$lib/utils/StorageUtils.svelte";
+  import { goto } from "$app/navigation";
+  import { flockStore } from "$lib/stores/FlockStore.js";
 
   export let item;
   export let flockId;
 
   function handleClick() {
     if (item === items.edit) {
-      window.location = '/create' + (flockId ? '?id=' + flockId : '');
+      goto('/create' + (flockId ? '?id=' + flockId : ''));
     } else if (item === items.delete) {
-      deleteFlock(flockId);
+      flockStore.update((flocks) => {
+        return flocks.filter((f) => f.id !== flockId);
+      });
     }
   }
-
 
 </script>
 
