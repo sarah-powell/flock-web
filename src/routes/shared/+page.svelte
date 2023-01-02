@@ -5,6 +5,9 @@
   const titleParam = $page.url.searchParams.get('t');
   const dateParam = $page.url.searchParams.get('d');
 
+  let timeStamp = Number(dateParam);
+  let date = new Date(timeStamp);
+
 </script>
 
-<Flock title={titleParam} date={new Date(dateParam)} showToolDrawer={false} />
+<Flock title={titleParam} date={date} showToolDrawer={false} />

@@ -4,7 +4,6 @@ export async function load({ url }) {
 
   const titleParam = url.searchParams.get('t');
   const dateParam = url.searchParams.get('d');
-  let date = new Date(dateParam);
 
   if (!titleParam) {
     throw error(400, {
@@ -20,7 +19,8 @@ export async function load({ url }) {
     });
   }
 
-  if (isNaN(date.getTime())) {
+  let timestamp = Number(dateParam);
+  if (isNaN(timestamp)) {
     throw error(400, {
       message: 'Invalid date',
       code: 400

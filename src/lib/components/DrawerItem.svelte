@@ -13,13 +13,20 @@
   export let item;
   export let flockId;
 
+  let flock = $flockStore.find((f) => flockId === f.id);
+
   function handleClick() {
     if (item === items.edit) {
       goto('/create' + (flockId ? '?id=' + flockId : ''));
+
+    } else if (item === items.share) {
+      goto(`/shared?t=${flock.title}&d=${flock.date}&zs=${flock.utc}`);
+
     } else if (item === items.delete) {
       flockStore.update((flocks) => {
         return flocks.filter((f) => f.id !== flockId);
       });
+
     }
   }
 
