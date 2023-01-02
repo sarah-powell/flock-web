@@ -7,7 +7,7 @@
   <a href="/create">+</a>
   <div class="content">
     {#each $flockStore as flock}
-      <Flock id={flock.id} title={flock.title} date={new Date(flock.date)}/>
+      <Flock id={flock.id} title={flock.title} dateTimestamp={flock.date}/>
     {/each}
   </div>
 </div>

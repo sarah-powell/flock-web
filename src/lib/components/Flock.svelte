@@ -9,11 +9,12 @@
 
   export let id = undefined;
   export let title;
-  export let date = new Date(1970, 1, 1);
+  export let dateTimestamp = 0;
   export let showToolDrawer = true;
 
   const numSlotsToDisplay = 3;
 
+  let date = new Date(dateTimestamp);
   let duration = getDurationFrom(date);
 
   const components = [

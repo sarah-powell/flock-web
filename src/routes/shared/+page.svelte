@@ -10,4 +10,4 @@
 
 </script>
 
-<Flock title={titleParam} date={date} showToolDrawer={false} />
+<Flock title={titleParam} dateTimestamp={date} showToolDrawer={false} />
