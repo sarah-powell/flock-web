@@ -42,7 +42,9 @@
       flocks = flocks.filter((f) => f.id !== id);
 
       // Add new flock
-      flocks.push({id, title, date});
+      let newFlock = {id, title};
+      newFlock.date = new Date(date).getTime();
+      flocks.push(newFlock);
 
       return flocks;
     });
