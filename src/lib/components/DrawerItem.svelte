@@ -20,7 +20,7 @@
       goto('/create' + (flockId ? '?id=' + flockId : ''));
 
     } else if (item === items.share) {
-      goto(`/shared?t=${flock.title}&d=${flock.date}`);
+      goto(`/shared?t=${flock.title}&d=${flock.dateTimestamp}`);
 
     } else if (item === items.delete) {
       flockStore.update((flocks) => {

@@ -13,6 +13,7 @@
   const idParam = $page.url.searchParams.get('id');
   let id;
   let title;
+  let dateString;
   let dateTimestamp;
 
   onMount(() => {
@@ -27,7 +28,7 @@
       if (flock) {
         id = flock.id;
         title = flock.title;
-        dateTimestamp = new Date(flock.date);
+        dateTimestamp = new Date(flock.dateTimestamp);
       }
     }
   });
@@ -42,8 +43,11 @@
       flocks = flocks.filter((f) => f.id !== id);
 
       // Add new flock
-      let newFlock = {id, title};
-      newFlock.date = new Date(dateTimestamp).getTime();
+      let newFlock = {
+        id: id,
+        title: title,
+        dateTimestamp: new Date(dateString).getTime()
+      };
       flocks.push(newFlock);
 
       return flocks;
@@ -61,7 +65,7 @@
   <input id="titleInput" type="text" name="title" bind:value="{title}">
 
   <label for="dateInput">Date</label>
-  <input id="dateInput" type="datetime-local" name="date" bind:value="{dateTimestamp}">
+  <input id="dateInput" type="datetime-local" name="date" bind:value="{dateString}">
 
   <input type="submit" value="Save">
 
