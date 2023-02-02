@@ -14,8 +14,8 @@
 
   const numSlotsToDisplay = 3;
 
-  let date = new Date(dateTimestamp);
-  let duration = getDurationFrom(date);
+  let endDate = new Date(dateTimestamp);
+  let duration = getDurationFrom(endDate);
 
   const components = [
     { value: duration.years(), label: "years" },
@@ -64,7 +64,7 @@
       {title}
     </div>
     <div class="flock-date">
-      {date.toLocaleDateString()}
+      {endDate.toLocaleDateString()}
     </div>
   </div>
   <div class="slots">
