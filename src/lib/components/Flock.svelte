@@ -4,18 +4,31 @@
   import TimeSlot from "$lib/components/TimeSlot.svelte";
   import DrawerItem from "$lib/components/DrawerItem.svelte";
   import { items } from "$lib/components/DrawerItem.svelte";
+  import { onMount } from "svelte";
 
   dayjs.extend(Duration) // Extends the API
+
+  const numSlotsToDisplay = 3;
 
   export let id = undefined;
   export let title;
   export let dateTimestamp = 0;
   export let showToolDrawer = true;
 
-  const numSlotsToDisplay = 3;
-
   let endDate = new Date(dateTimestamp);
   let duration = getDurationFrom(endDate);
+  $: years = duration.years();
+  $: months = duration.months();
+  $: days = duration.days();
+  $: hours = duration.hours();
+  $: minutes = duration.minutes();
+  $: seconds = duration.seconds();
+
+  onMount(() => {
+    setInterval(() => {
+      duration = getDurationFrom(endDate);
+    }, 1000);
+  });
 
   const components = [
     { value: duration.years(), label: "years" },
@@ -68,9 +81,12 @@
     </div>
   </div>
   <div class="slots">
-    {#each displayableTimes() as comp}
-      <TimeSlot value={Math.abs(comp.value)} label={comp.label}/>
-    {/each}
+      <TimeSlot value={years} label={"years"}/>
+      <TimeSlot value={months} label={"months"}/>
+      <TimeSlot value={days} label={"days"}/>
+      <TimeSlot value={hours} label={"hours"}/>
+      <TimeSlot value={minutes} label={"minutes"}/>
+      <TimeSlot value={seconds} label={"seconds"}/>
   </div>
   {#if showToolDrawer}
     <div class="drawer">

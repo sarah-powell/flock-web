@@ -8,7 +8,7 @@
 </script>
 
 <div class="time-slot">
-  <div class="value">{value}</div>
+  <div class="value">{Math.abs(value)}</div>
   <div class="label">{labelPlural}</div>
 </div>
 
