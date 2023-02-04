@@ -152,7 +152,7 @@
     .drawer {
         background-color: #B046E8;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
 </style>

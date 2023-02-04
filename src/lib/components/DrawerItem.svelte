@@ -34,12 +34,28 @@
 
 <div class="DrawerItem">
   <button on:click={handleClick}>{item}</button>
-<!--  TODO: SVG instead? -->
 </div>
 
 <style>
+
   .DrawerItem {
+      margin-top: 4px;
       display: inline-block;
       color: #B046E8;
   }
+
+  button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 65px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+
+      color: #b046e8;
+      background: white;
+      background-origin: border-box;
+  }
+
 </style>
