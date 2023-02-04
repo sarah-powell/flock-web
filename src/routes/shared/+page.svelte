@@ -30,7 +30,6 @@
 
       // Add new flock
       let newFlock = {id: uuidv5(), title: titleParam, dateTimestamp: timeStamp};
-      console.log(newFlock);
       flocks.push(newFlock);
 
       return flocks;
@@ -41,15 +40,34 @@
 
 </script>
 
-<PageNav>
+
+<PageNav flexDirection="space-between">
   <a id="myFlocksButton" href="/">My Flocks</a>
+  <button id="#saveButton" on:click={saveFlock}>
+    Save
+  </button>
 </PageNav>
-<Flock title={titleParam} dateTimestamp={date} showToolDrawer={false} />
-<button id="#saveButton" on:click={saveFlock}>
-  Save
-</button>
+
+<div class="main">
+  <div class="content">
+    <Flock title={titleParam} dateTimestamp={date} showToolDrawer={false} />
+  </div>
+</div>
+
 
 <style>
+
+    .main {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 16px;
+    }
 
     #myFlocksButton {
         display: flex;
