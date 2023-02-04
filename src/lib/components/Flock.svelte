@@ -108,9 +108,9 @@
   </div>
   {#if showToolDrawer}
     <div class="drawer">
-      <DrawerItem item="{items.edit}" flockId="{id}"/>
-      <DrawerItem item="{items.share}" flockId="{id}"/>
-      <DrawerItem item="{items.delete}" flockId="{id}"/>
+      <DrawerItem item={items.edit} flockId={id}/>
+      <DrawerItem item={items.share} flockId={id}/>
+      <DrawerItem item={items.delete} flockId={id}/>
     </div>
   {/if}
 </div>
@@ -134,7 +134,7 @@
     }
 
     .drawer {
-        background-color: white;
+        background-color: #B046E8;
         display: flex;
         justify-content: space-around;
     }

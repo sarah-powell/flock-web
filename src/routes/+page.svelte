@@ -25,8 +25,15 @@
 <style>
 
     .main {
+        width: 100%;
         display: flex;
         justify-content: center;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 16px;
     }
 
     #createLink {
