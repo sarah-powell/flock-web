@@ -22,7 +22,6 @@
   let duration = getDurationFrom(endDate);
   let drawerIsOpen = false;
 
-  // Reactive vars
   $: years = duration.years();
   $: months = duration.months();
   $: days = duration.days();
@@ -142,6 +141,7 @@
     .header {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 4px;
     }
 
     .slots {
