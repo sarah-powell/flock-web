@@ -11,15 +11,18 @@
   const numSlotsToDisplay = 3;
   const endDateFormat = 'MMM D, YYYY [at] h:mm A';
 
+  // Component args
   export let id = undefined;
   export let title;
   export let dateTimestamp = 0;
   export let disableToolDrawer = false;
 
+  // Local vars
   let endDate = new Date(dateTimestamp);
   let duration = getDurationFrom(endDate);
   let drawerIsOpen = false;
 
+  // Reactive vars
   $: years = duration.years();
   $: months = duration.months();
   $: days = duration.days();
@@ -73,6 +76,9 @@
     return components.slice(startIndex, endIndex);
   }
 
+  /**
+   * Returns the DayJS duration object for the given date
+   */
   function getDurationFrom(date) {
     const now = dayjs();
     return dayjs.duration(now.diff(date));
