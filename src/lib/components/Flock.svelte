@@ -4,7 +4,7 @@
   import TimeSlot from "$lib/components/TimeSlot.svelte";
   import DrawerItem from "$lib/components/DrawerItem.svelte";
   import { items } from "$lib/components/DrawerItem.svelte";
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
 
   dayjs.extend(Duration) // Extends the API
 
@@ -24,26 +24,32 @@
   $: minutes = duration.minutes();
   $: seconds = duration.seconds();
 
+  // Refresh the timer often for responsive times
+  let refreshTick;
   onMount(() => {
-    setInterval(() => {
+    refreshTick = setInterval(() => {
       duration = getDurationFrom(endDate);
-    }, 1000);
+    }, 100);
   });
 
-  const components = [
-    { value: duration.years(), label: "years" },
-    { value: duration.months(), label: "months" },
-    { value: duration.days(), label: "days" },
-    { value: duration.hours(), label: "hours" },
-    { value: duration.minutes(), label: "minutes" },
-    { value: duration.seconds(), label: "seconds" }
-  ];
+  onDestroy(() => {
+    clearInterval(refreshTick)
+  });
 
   /**
    * Find the displayable time components to render
    * @returns array of components
    */
   function displayableTimes() {
+    let components = [
+      { years: duration.years() },
+      { months: duration.months() },
+      { days: duration.days() },
+      { hours: duration.hours() },
+      { minutes: duration.minutes() },
+      { seconds: duration.seconds() }
+    ];
+
     let compLength = components.length;
 
     let startIndex = 0;
@@ -51,7 +57,7 @@
 
     // Find the first non-zero value
     for (const [index, comp] of components.entries()) {
-      if (Math.abs(comp.value) > 0) {
+      if (Math.abs(Object.values(comp)[0]) > 0) {
         // Determine how many slots we can render with this index
         let canRender = Math.min(compLength - index, numSlotsToDisplay);
         let backFillAmount = numSlotsToDisplay - canRender;
@@ -81,12 +87,24 @@
     </div>
   </div>
   <div class="slots">
-      <TimeSlot value={years} label={"years"}/>
-      <TimeSlot value={months} label={"months"}/>
-      <TimeSlot value={days} label={"days"}/>
-      <TimeSlot value={hours} label={"hours"}/>
-      <TimeSlot value={minutes} label={"minutes"}/>
-      <TimeSlot value={seconds} label={"seconds"}/>
+    {#if displayableTimes().some(c => "years" in c)}
+      <TimeSlot value={years} label="years"/>
+    {/if}
+    {#if displayableTimes().some(c => "months" in c)}
+      <TimeSlot value={months} label="months"/>
+    {/if}
+    {#if displayableTimes().some(c => "days" in c)}
+      <TimeSlot value={days} label="days"/>
+    {/if}
+    {#if displayableTimes().some(c => "hours" in c)}
+      <TimeSlot value={hours} label="hours"/>
+    {/if}
+    {#if displayableTimes().some(c => "minutes" in c)}
+      <TimeSlot value={minutes} label="minutes"/>
+    {/if}
+    {#if displayableTimes().some(c => "seconds" in c)}
+      <TimeSlot value={seconds} label="seconds"/>
+    {/if}
   </div>
   {#if showToolDrawer}
     <div class="drawer">
