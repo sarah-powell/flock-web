@@ -2,13 +2,13 @@
   export let value = -1;
   export let label = "undefined";
 
-  // Drop the 's' when needed
-  let labelPlural = value === 1 ? label.slice(0, -1) : label
+  let absVal = Math.abs(value);
+  let labelPlural = absVal === 1 ? label.slice(0, -1) : label // Plurality
 
 </script>
 
 <div class="time-slot">
-  <div class="value">{Math.abs(value)}</div>
+  <div class="value">{absVal}</div>
   <div class="label">{labelPlural}</div>
 </div>
 
