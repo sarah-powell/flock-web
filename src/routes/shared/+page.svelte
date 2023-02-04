@@ -50,7 +50,7 @@
 
 <div class="main">
   <div class="content">
-    <Flock title={titleParam} dateTimestamp={date} showToolDrawer={false} />
+    <Flock title={titleParam} dateTimestamp={date} disableToolDrawer=true />
   </div>
 </div>
 

@@ -14,10 +14,12 @@
   export let id = undefined;
   export let title;
   export let dateTimestamp = 0;
-  export let showToolDrawer = true;
+  export let disableToolDrawer = false;
 
   let endDate = new Date(dateTimestamp);
   let duration = getDurationFrom(endDate);
+  let drawerIsOpen = false;
+
   $: years = duration.years();
   $: months = duration.months();
   $: days = duration.days();
@@ -85,7 +87,7 @@
 
 </script>
 
-<div class="flock">
+<div class="flock" on:click={() => drawerIsOpen = !drawerIsOpen}>
   <div class="header">
     <div class="flock-title">
       {title}
@@ -114,7 +116,7 @@
       <TimeSlot value={seconds} label="seconds"/>
     {/if}
   </div>
-  {#if showToolDrawer}
+  {#if !disableToolDrawer && drawerIsOpen}
     <div class="drawer">
       <DrawerItem item={items.edit} flockId={id}/>
       <DrawerItem item={items.share} flockId={id}/>
