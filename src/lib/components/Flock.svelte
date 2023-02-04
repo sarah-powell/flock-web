@@ -9,6 +9,7 @@
   dayjs.extend(Duration) // Extends the API
 
   const numSlotsToDisplay = 3;
+  const endDateFormat = 'MMM D, YYYY [at] h:mm A';
 
   export let id = undefined;
   export let title;
@@ -75,6 +76,13 @@
     return dayjs.duration(now.diff(date));
   }
 
+  /**
+   * Calculates how the end date should render
+   */
+  function getDisplayableEndDate(date) {
+    return dayjs(date).format(endDateFormat)
+  }
+
 </script>
 
 <div class="flock">
@@ -83,7 +91,7 @@
       {title}
     </div>
     <div class="flock-date">
-      {endDate.toLocaleDateString()}
+      {getDisplayableEndDate(endDate)}
     </div>
   </div>
   <div class="slots">
