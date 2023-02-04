@@ -3,11 +3,9 @@
   import { flockStore } from "$lib/stores/FlockStore.js";
   import PageNav from "$lib/components/PageNav.svelte";
 
-  function sortFlocks() {
-    return $flockStore.sort((a, b) => {
+  $: sortedFlocks = $flockStore.sort((a, b) => {
       return a.dateTimestamp - b.dateTimestamp;
-    });
-  }
+  });
 
 </script>
 
@@ -16,7 +14,7 @@
 </PageNav>
 <div class="main">
   <div class="content">
-    {#each sortFlocks() as flock}
+    {#each sortedFlocks as flock}
       <Flock id={flock.id} title={flock.title} dateTimestamp={flock.dateTimestamp}/>
     {/each}
   </div>
