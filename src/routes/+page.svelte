@@ -9,6 +9,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Flock</title>
+</svelte:head>
+
 <PageNav flexDirection="flex-end">
   <a id="createLink" href="/create">+</a>
 </PageNav>

@@ -3,6 +3,10 @@
   import PageNav from "$lib/components/PageNav.svelte";
 </script>
 
+<svelte:head>
+  <title>Flock - Create</title>
+</svelte:head>
+
 <PageNav>
   <a id="cancelButton" href="/">Cancel</a>
 </PageNav>

@@ -40,6 +40,9 @@
 
 </script>
 
+<svelte:head>
+  <title>Shared Flock - {titleParam}</title>
+</svelte:head>
 
 <PageNav flexDirection="space-between">
   <a id="myFlocksButton" href="/">My Flocks</a>
