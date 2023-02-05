@@ -2,6 +2,7 @@
   import { page } from "$app/stores";
   import Flock from "$lib/components/Flock.svelte";
   import PageNav from "$lib/components/PageNav.svelte";
+  import Button from "$lib/components/Button.svelte";
   import { goto } from "$app/navigation";
   import { v4 as uuidv5 } from "uuid";
   import { flockStore } from "$lib/stores/FlockStore.js";
@@ -45,10 +46,8 @@
 </svelte:head>
 
 <PageNav flexDirection="space-between">
-  <a id="myFlocksButton" href="/">My Flocks</a>
-  <button id="#saveButton" on:click={saveFlock}>
-    Save
-  </button>
+  <a id="myFlocksButton" href="/">View my Flocks</a>
+  <Button clickFunction={saveFlock}>Save</Button>
 </PageNav>
 
 <div class="main">

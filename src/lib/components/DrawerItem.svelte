@@ -9,6 +9,7 @@
 <script>
   import { goto } from "$app/navigation";
   import { flockStore } from "$lib/stores/FlockStore.js";
+  import Button from "$lib/components/Button.svelte";
 
   export let item;
   export let flockId;
@@ -33,7 +34,7 @@
 </script>
 
 <div class="DrawerItem">
-  <button on:click={handleClick}>{item}</button>
+  <Button clickFunction={handleClick}>{item}</Button>
 </div>
 
 <style>
