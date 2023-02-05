@@ -4,13 +4,16 @@
   import { page } from '$app/stores';
   import { flockStore } from "$lib/stores/FlockStore.js";
   import { v4 as uuidv5 } from 'uuid';
+  import dayjs from "dayjs";
+
+  const idParam = $page.url.searchParams.get('id');
+  const DATE_FIELD_FORMAT = "YYYY-MM-DD[T]HH:MM"
 
   let flocks;
   const unsubscribe = flockStore.subscribe((flockList) => {
     flocks = flockList;
   });
 
-  const idParam = $page.url.searchParams.get('id');
   let id;
   let title;
   let dateString;
@@ -28,10 +31,14 @@
       if (flock) {
         id = flock.id;
         title = flock.title;
-        dateTimestamp = new Date(flock.dateTimestamp);
+        dateString = formatDate(new Date(flock.dateTimestamp), DATE_FIELD_FORMAT);
       }
     }
   });
+
+  function formatDate(date, pattern) {
+    return dayjs(date).format(pattern)
+  }
 
   onDestroy(() => {
     unsubscribe();
@@ -62,10 +69,10 @@
 <form on:submit|preventDefault={submitForm}>
 
   <label for="titleInput">Title</label>
-  <input id="titleInput" type="text" name="title" bind:value="{title}">
+  <input id="titleInput" type="text" name="title" bind:value={title}>
 
   <label for="dateInput">Date</label>
-  <input id="dateInput" type="datetime-local" name="date" bind:value="{dateString}">
+  <input id="dateInput" type="datetime-local" name="date" bind:value={dateString}>
 
   <input type="submit" value="Save">
 
