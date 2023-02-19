@@ -4,8 +4,8 @@
   "short_name": "Flock",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#A62CE7",
-  "background_color": "#A62CE7",
+  "theme_color": "#AF3CE2",
+  "background_color": "#AF3CE2",
   "description": "A countdown app",
   "icons": [
     {
