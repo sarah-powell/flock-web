@@ -43,6 +43,7 @@
 
 <svelte:head>
   <title>Shared Flock - {titleParam}</title>
+  <meta name="description" content="Share your Flock with others">
 </svelte:head>
 
 <PageNav flexDirection="space-between">

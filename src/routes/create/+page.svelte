@@ -5,6 +5,7 @@
 
 <svelte:head>
   <title>Flock - Create</title>
+  <meta name="description" content="Create a new Flock">
 </svelte:head>
 
 <PageNav>

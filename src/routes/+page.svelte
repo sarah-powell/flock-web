@@ -11,6 +11,7 @@
 
 <svelte:head>
   <title>Flock</title>
+  <meta name="description" content="A countdown app">
 </svelte:head>
 
 <PageNav flexDirection="flex-end">
