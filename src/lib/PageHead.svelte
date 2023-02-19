@@ -1,5 +1,5 @@
 <svelte:head>
-  <meta name="theme-color" content="#B046E82CE7"/>
+  <meta name="theme-color" content="#AF3CE2"/>
   <slot>
     <title>Flock</title>
     <meta name="description" content="A countdown app">
