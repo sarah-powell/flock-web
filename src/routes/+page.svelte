@@ -2,7 +2,7 @@
   import Flock from '$lib/components/Flock.svelte'
   import { flockStore } from "$lib/stores/FlockStore.js";
   import PageNav from "$lib/components/PageNav.svelte";
-  import PageHead from "$lib/PageHead.svelte";
+  import PageHead from "$lib/components/PageHead.svelte";
 
   $: sortedFlocks = $flockStore.sort((a, b) => {
       return a.dateTimestamp - b.dateTimestamp;

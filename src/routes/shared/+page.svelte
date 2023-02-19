@@ -7,7 +7,7 @@
   import { v4 as uuidv5 } from "uuid";
   import { flockStore } from "$lib/stores/FlockStore.js";
   import { onDestroy } from "svelte";
-  import PageHead from "$lib/PageHead.svelte";
+  import PageHead from "$lib/components/PageHead.svelte";
 
   const titleParam = $page.url.searchParams.get('t');
   const dateParam = $page.url.searchParams.get('d');

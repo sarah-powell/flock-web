@@ -1,7 +1,7 @@
 <script>
   import FlockForm from "$lib/components/FlockForm.svelte";
   import PageNav from "$lib/components/PageNav.svelte";
-  import PageHead from "$lib/PageHead.svelte";
+  import PageHead from "$lib/components/PageHead.svelte";
 </script>
 
 <PageHead>
