@@ -20,7 +20,7 @@
         border-radius: 6px;
         border: none;
 
-        color: #b046e8;
+        color: #A62CE7;
         background: white;
         background-origin: border-box;
     }

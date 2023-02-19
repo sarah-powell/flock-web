@@ -150,7 +150,7 @@
     }
 
     .drawer {
-        background-color: #B046E8;
+        background-color: #A62CE7;
         display: flex;
         justify-content: space-evenly;
     }

@@ -42,7 +42,7 @@
   .DrawerItem {
       margin-top: 4px;
       display: inline-block;
-      color: #B046E8;
+      color: #A62CE7;
   }
 
   button {
@@ -54,7 +54,7 @@
       border-radius: 6px;
       border: none;
 
-      color: #b046e8;
+      color: #A62CE7;
       background: white;
       background-origin: border-box;
   }
