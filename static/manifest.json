@@ -1,0 +1,27 @@
+{
+  "id": "flockclock-app",
+  "name": "Flock",
+  "short_name": "Flock",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#B046E8",
+  "description": "A countdown app",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "shortcuts" : [
+    {
+      "name": "New Flock",
+      "url": "/create"
+    }
+  ]
+}
