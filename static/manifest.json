@@ -4,18 +4,21 @@
   "short_name": "Flock",
   "display": "standalone",
   "start_url": "/",
-  "theme_color": "#B046E8",
+  "theme_color": "#A62CE7",
+  "background_color": "#A62CE7",
   "description": "A countdown app",
   "icons": [
     {
       "src": "/icon-192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "shortcuts" : [

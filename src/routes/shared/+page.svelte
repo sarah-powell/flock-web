@@ -7,6 +7,7 @@
   import { v4 as uuidv5 } from "uuid";
   import { flockStore } from "$lib/stores/FlockStore.js";
   import { onDestroy } from "svelte";
+  import PageHead from "$lib/PageHead.svelte";
 
   const titleParam = $page.url.searchParams.get('t');
   const dateParam = $page.url.searchParams.get('d');
@@ -41,10 +42,10 @@
 
 </script>
 
-<svelte:head>
+<PageHead>
   <title>Shared Flock - {titleParam}</title>
   <meta name="description" content="Share your Flock with others">
-</svelte:head>
+</PageHead>
 
 <PageNav flexDirection="space-between">
   <a id="myFlocksButton" href="/">View my Flocks</a>

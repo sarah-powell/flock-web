@@ -2,6 +2,7 @@
   import Flock from '$lib/components/Flock.svelte'
   import { flockStore } from "$lib/stores/FlockStore.js";
   import PageNav from "$lib/components/PageNav.svelte";
+  import PageHead from "$lib/PageHead.svelte";
 
   $: sortedFlocks = $flockStore.sort((a, b) => {
       return a.dateTimestamp - b.dateTimestamp;
@@ -9,10 +10,7 @@
 
 </script>
 
-<svelte:head>
-  <title>Flock</title>
-  <meta name="description" content="A countdown app">
-</svelte:head>
+<PageHead/>
 
 <PageNav flexDirection="flex-end">
   <a id="createLink" href="/create">+</a>

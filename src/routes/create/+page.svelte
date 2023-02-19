@@ -1,12 +1,13 @@
 <script>
   import FlockForm from "$lib/components/FlockForm.svelte";
   import PageNav from "$lib/components/PageNav.svelte";
+  import PageHead from "$lib/PageHead.svelte";
 </script>
 
-<svelte:head>
+<PageHead>
   <title>Flock - Create</title>
   <meta name="description" content="Create a new Flock">
-</svelte:head>
+</PageHead>
 
 <PageNav>
   <a id="cancelButton" href="/">Cancel</a>
