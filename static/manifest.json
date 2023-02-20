@@ -2,7 +2,7 @@
   "id": "flockclock-app",
   "name": "Flock",
   "short_name": "Flock",
-  "display": "standalone",
+  "display": "browser",
   "start_url": "/",
   "scope": "/",
   "theme_color": "#AF3CE2",
